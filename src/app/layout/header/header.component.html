@@ -1,0 +1,78 @@
+<mat-toolbar class="header">
+  <div class="logo">
+    <span class="title">
+      <a routerLink="/home">
+        <mat-icon class="basket-icon">shopping_basket</mat-icon>
+        FakeShopping.wow</a>
+    </span>
+  </div>
+
+  <span class="toolbar-spacer"></span>
+
+  <!-- SearchBar -->
+  <div class="search-box">
+    <input type="text"
+      class="search-input"
+      placeholder="Search for a product..."
+    />
+    <a class="search-btn" href="#">
+      <mat-icon>search</mat-icon>
+    </a>
+  </div>
+
+  <!-- Theme Switcher -->
+  <button mat-icon-button>
+    <mat-icon>dark_mode</mat-icon>
+  </button>
+
+  <!-- Account Button -->
+  <button mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <!-- Cart Button -->
+  <button mat-icon-button
+    [matMenuTriggerFor]="menu">
+    <mat-icon
+      [matBadge]="itemsQuantity"
+      [matBadgeHidden]="!itemsQuantity"
+      matBadgeColor="warn">
+      shopping_cart
+    </mat-icon>
+  </button>
+
+  <!-- Menu Carrello Nascosto -->
+  <mat-menu #menu="matMenu">
+    <div class="hidden-cart-menu">
+
+      <!-- Menu Header -->
+      <div class="hidden-cart-menu-header">
+        <span>{{ cart.items.length }} Items</span>
+      </div>
+
+      <!-- Menu Content -->
+      <div class="hidden-cart-menu-content" *ngIf="cart.items.length">
+        <div *ngFor="let item of cart.items">
+          {{ item.name }} x {{ item.quantity }}
+          <span>{{ item.price | currency }}</span>
+        </div>
+      </div>
+
+      <!-- Menu Total -->
+      <div>
+        Total:
+        <span>{{ getTotal(cart.items) | currency }}</span>
+      </div>
+
+      <!-- Buttons -->
+      <div>
+        <a routerLink="/cart">
+          <button mat-raised-button
+            color="accent">
+            Go to Cart
+          </button>
+        </a>
+      </div>
+    </div>
+  </mat-menu>
+</mat-toolbar>

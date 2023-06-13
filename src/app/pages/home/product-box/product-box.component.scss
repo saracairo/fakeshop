@@ -1,0 +1,53 @@
+@import 'src/scss/styles.scss';
+
+.product-card {
+  width: 320px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    opacity: 0.9; // 90%
+    transform: translateY(-5px);
+  }
+  mat-card-content {
+    @include flexBetween(column);
+    @include widthHeight(100%, 100%);
+    position: relative;
+  }
+}
+
+img {
+  @include widthHeight(300px, 200px);
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.info-box {
+  bottom: 0;
+  @include widthHeight(100%, 160px);
+  @include flexBetween(column);
+  font-size: 1rem;
+  padding: 0 2rem 1rem;
+
+  .product-text {
+    @include widthHeight(100%, auto);
+    text-align: center;
+    .product-title {
+      margin-top: 5px;
+    }
+  }
+  .price-box {
+    @include widthHeight(100%, auto);
+    @include flexBetween(row);
+    button {
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    span {
+      color: rgb(209, 76, 76);
+    }
+  }
+}
+
+
+/* ===============
+   Grid Classes
+=============== */

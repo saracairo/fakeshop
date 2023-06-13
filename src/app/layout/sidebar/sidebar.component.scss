@@ -1,0 +1,15 @@
+@import 'src/scss/styles.scss';
+
+.sidenav {
+  @include widthHeight(300px, 100%);
+  @include flexStart(column);
+  background-color: $primary50;
+  margin-top: 75px;
+  position: fixed;
+  padding: 2rem 0;
+}
+
+.filters {
+  @include widthHeight(220px, auto);
+  font-size: 16px;
+}

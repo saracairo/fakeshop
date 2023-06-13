@@ -1,0 +1,111 @@
+<app-header></app-header>
+
+<!-- Se nel carrello è presente uno o più item: -->
+<mat-card *ngIf="cart.items.length">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Colonne prodotti: -->
+    <ng-container matColumnDef="product">
+        <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>Product</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- let element permette l'accesso alla proprietà dell'oggetto -->
+        <img src="{{ element.product }}" alt="product" />
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-raised-button routerLink="/home">
+          Continue shopping
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- let element permette l'accesso alla proprietà dell'oggetto -->
+        <span>{{ element.name }}</span>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- let element permette l'accesso alla proprietà dell'oggetto -->
+        {{ element.price | currency }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- let element permette l'accesso alla proprietà dell'oggetto -->
+        <button mat-icon-button
+        (click)="onRemoveQuantity(element)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span>{{ element.quantity }}</span>
+        <button mat-icon-button
+          (click)="onAddQuantity(element)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- let element permette l'accesso alla proprietà dell'oggetto -->
+        {{ (element.quantity * element.price) | currency }}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <span class="font-bold py-5 block">
+          {{ getTotal(cart.items) | currency}}
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <!-- matColumnDef corrisponde alla chiave di accesso al dato nell'item -->
+      <th mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="warn" class="float-right"
+          (click)="onClearCart()">
+          Clear all
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" class="float-right"
+          (click)="onRemoveFromCart(element)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button mat-raised-button
+          color="primary" class="float-right">
+          Proceed to checkout
+        </button>
+      </td>
+    </ng-container>
+
+
+    <!-- Placeholder in cui le table cells saranno renderizzate: -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+</mat-card>
+
+<!-- Se il carrello è vuoto: -->
+<mat-card *ngIf="!cart.items.length"
+  class="mx-auto my-3 max-w-2xl p-10">
+  <p class="text-lg">Your cart is empty.</p>
+  <button mat-raised-button routerLink="/home" color="accent">
+    Go back shopping
+  </button>
+</mat-card>

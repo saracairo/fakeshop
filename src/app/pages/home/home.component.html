@@ -1,0 +1,63 @@
+<div clas="home-wrapper">
+  <app-header [cart]="cart"></app-header>
+  <app-sidebar></app-sidebar>
+
+  <div class="products-container">
+
+    <!-- ========================================
+              Modalità di visualizzazione
+    ======================================== -->
+    <mat-card class="products-header">
+
+      <!-- Tipo di Ordine -->
+      <section>
+        <button mat-button [matMenuTriggerFor]="sortByMenu">
+          Sort from <strong>{{ sort }}</strong> price
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #sortByMenu="matMenu">
+          <button (click)="onSortUpdated('lowest')" mat-menu-item>Lowest</button>
+          <button (click)="onSortUpdated('highest')" mat-menu-item>Highest</button>
+        </mat-menu>
+      </section>
+
+      <!-- Tipo di Griglia -->
+      <section>
+        <button mat-flat-button class="grid-style"
+          (click)="onColumnsUpdated(1)">
+          <mat-icon>
+            view_list
+          </mat-icon>
+        </button>
+        <button mat-flat-button class="grid-style"
+          (click)="onColumnsUpdated(3)">
+          <mat-icon>
+            view_module
+          </mat-icon>
+        </button> <!-- bottoni a cui è assegnato un numero: al click verrà inviata la scelta al metodo ts -->
+      </section>
+
+    </mat-card>
+
+
+    <!-- ========================================
+              Griglia Prodotti
+    ======================================== -->
+    <div class="product-grid">
+
+      <!-- Loop dei dati fetchati -->
+      <div class="card" *ngFor="let product of productList">
+        <!-- [product]="product" passa i dati product al componente ProductBox -->
+        <app-product-box
+          [product]="product"
+          (addToCart)="onAddToCart($event)"
+          [fullWidthMode]="cols === 1">
+          <!-- fullWidthMode attiva solo se la variabile cols risulta uguale a 1 -->
+        </app-product-box>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

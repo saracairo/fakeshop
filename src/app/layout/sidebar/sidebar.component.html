@@ -1,0 +1,81 @@
+<mat-sidenav mode="side" opened class="sidenav">
+
+  <!-- <button mat-button [matMenuTriggerFor]="categories">CATEGORIES</button>
+  <mat-menu #categories="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="clothing">Clothing</button>
+    <button mat-menu-item [matMenuTriggerFor]="accessories">Accessories</button>
+  </mat-menu>
+
+  <mat-menu #clothing="matMenu">
+    <button mat-menu-item>All clothing</button>
+    <button mat-menu-item [matMenuTriggerFor]="man">Man</button>
+    <button mat-menu-item [matMenuTriggerFor]="woman">Woman</button>
+    <button mat-menu-item [matMenuTriggerFor]="child">Child</button>
+  </mat-menu>
+
+  <mat-menu #accessories="matMenu">
+    <button mat-menu-item>All accessories</button>
+    <button mat-menu-item>Hats</button>
+    <button mat-menu-item>Jewelry</button>
+    <button mat-menu-item>Belts</button>
+    <button mat-menu-item>MakeUp</button>
+    <button mat-menu-item>Gadget</button>
+  </mat-menu>
+
+  <mat-menu #man="matMenu">
+    <button mat-menu-item>All products</button>
+    <button mat-menu-item>Shits</button>
+    <button mat-menu-item>Pants</button>
+    <button mat-menu-item>Shoes</button>
+    <button mat-menu-item>Coats</button>
+    <button mat-menu-item>Underwear</button>
+  </mat-menu>
+
+  <mat-menu #woman="matMenu">
+    <button mat-menu-item>All products</button>
+    <button mat-menu-item>Shits</button>
+    <button mat-menu-item>Pants</button>
+    <button mat-menu-item>Shoes</button>
+    <button mat-menu-item>Coats</button>
+    <button mat-menu-item>Underwear</button>
+  </mat-menu>
+
+  <mat-menu #child="matMenu">
+    <button mat-menu-item>All products</button>
+    <button mat-menu-item>Shits</button>
+    <button mat-menu-item>Pants</button>
+    <button mat-menu-item>Shoes</button>
+    <button mat-menu-item>Coats</button>
+    <button mat-menu-item>Underwear</button>
+  </mat-menu> -->
+
+
+  <mat-expansion-panel hideToggle class="filters">
+    <mat-expansion-panel-header>
+      <mat-panel-title>CATEGORIES</mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <!-- Lista categorie -->
+    <mat-selection-list [multiple]="false">
+      <!-- componente material che permette di selezionare gli elementi al suo interno; gli elementi emetteranno un valore che sarà inviato al componente parent per mostrare i prodotti in base alla scelta -->
+
+      <mat-list-option>All products</mat-list-option>
+      <mat-list-option>Clothing</mat-list-option>
+      <mat-list-option>Accessories</mat-list-option>
+
+      <mat-list-option>Man</mat-list-option>
+      <mat-list-option>Woman</mat-list-option>
+      <mat-list-option>Child</mat-list-option>
+
+      <!-- <mat-list-option
+        *ngFor="let category of categories"
+        [value]="category">
+        <button (click)="onShowCategory(category)">
+          {{ category }}
+        </button>
+      </mat-list-option> -->
+
+    </mat-selection-list>
+  </mat-expansion-panel>
+
+</mat-sidenav>

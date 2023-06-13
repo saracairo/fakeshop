@@ -1,0 +1,42 @@
+<mat-card class="product-card">
+  <mat-card-content [ngClass]="{ flex : fullWidthMode }">
+
+    <!-- Immagine -->
+    <img [src]="product?.image"
+      [ngClass]="{ 'classname' : !fullWidthMode,
+      'classnamey' : fullWidthMode }"/>
+
+    <!-- Info -->
+    <div class="info-box"
+      [ngClass]="{ 'classnames' : fullWidthMode }">
+
+      <!-- Descrizione -->
+      <div class="product-text">
+        <h5>{{ product?.category }}</h5>
+        <p class="product-title">
+          {{ product?.title }}
+        </p>
+        <p *ngIf="fullWidthMode">
+          {{ product?.description }}
+        </p>
+      </div>
+
+      <!-- Prezzo -->
+      <div class="price-box">
+        <span>
+          {{ product?.price| currency }}
+        </span>
+
+        <!-- Add to cart Button-->
+        <button mat-flat-button (click)="onAddToCart()" color="accent">
+          Add to cart
+          <mat-icon>
+            shopping_cart
+          </mat-icon>
+        </button>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+</mat-card>

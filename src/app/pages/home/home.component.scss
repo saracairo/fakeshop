@@ -1,0 +1,37 @@
+@import 'src/scss/styles.scss';
+
+.home-wrapper {
+  position: relative;
+  @include flexCenter(row);
+  @include widthHeight(100%, 100vh);
+}
+
+.products-container {
+  position: absolute;
+  @include widthHeight(auto, 100%);
+  margin: 92px 0 0 250px;
+  padding: 1rem 4rem 3rem 10rem;
+  background-color: transparent;
+}
+
+.product-grid {
+  @include flexCenter(row);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.products-header {
+  @include widthHeight(100%, 47px);
+  @include flexBetween(row);
+  margin-bottom: 40px;
+  padding: 0 1rem;
+}
+
+
+.grid-style {
+  mat-icon {
+    @include widthHeight(100%, 100%);
+    font-size: 30px;
+    margin: 5px 0 0;
+  }
+}

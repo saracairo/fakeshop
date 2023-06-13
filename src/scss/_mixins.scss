@@ -1,0 +1,76 @@
+/* =========================================
+               Width & Height
+========================================= */
+
+@mixin widthHeight($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin minWidthHeight($min-width, $min-height) {
+  min-width: $min-width;
+  min-height: $min-height;
+}
+
+@mixin maxWidthHeight($max-width, $max-height) {
+  max-width: $max-width;
+  max-height: $max-height;
+}
+
+
+/* =========================================
+                 FlexBoxes
+========================================= */
+
+@mixin flexCenter($flex-direction) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin flexAround($flex-direction) {
+  @include flexCenter($flex-direction);
+  justify-content: space-around;
+}
+
+@mixin flexBetween($flex-direction) {
+  @include flexCenter($flex-direction);
+  justify-content: space-between;
+}
+
+@mixin flexEvenly($flex-direction) {
+  @include flexCenter($flex-direction);
+  justify-content: space-evenly;
+}
+
+@mixin flexEnd($flex-direction) {
+  @include flexCenter($flex-direction);
+  justify-content: flex-end;
+}
+
+@mixin flexStart($flex-direction) {
+  @include flexCenter($flex-direction);
+  justify-content: flex-start;
+}
+
+
+/* =============================================
+                   BUTTONS
+============================================= */
+
+@mixin baseBtn() {
+  display: inline-block;
+  @include widthHeight(100px, 30px);
+  margin: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px 0px rgba(0,255,255,0.7);
+  cursor: pointer;
+  transition: all ease 0.2s;
+  &:hover {
+    box-shadow: 0px 10px 20px 2px rgba(0,255,255,0.7);
+    transform: translateY(-5px);
+  }
+}

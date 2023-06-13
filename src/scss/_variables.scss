@@ -1,0 +1,30 @@
+/* =========================================
+               Color Variables
+========================================= */
+@use './color-palette';
+
+$shop-primary2: #7dd87d;
+$shop-accent: #5b446a;
+$shop-secondary2: #906387;
+$shop-warn: #da5a61;
+
+$primary: var(--lightblue500);
+$primary10: var(--lightblue10);
+$primary50: var(--lightblue50);
+$primary100: var(--lightblue100);
+
+
+/* =========================================
+              Layout Variables
+========================================= */
+
+$default-border-radius: 4px;
+
+
+
+/* =========================================
+              Font Variables
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+$title-font: 'Play', sans-serif;
